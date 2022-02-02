@@ -1,0 +1,91 @@
+.chatBoard {
+  p {
+    max-width: 500px;
+    margin-bottom: 12px;
+    line-height: 24px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+  }
+  background: rgb(255 255 255);
+  padding: 0px 0 20px 20px;
+  border: 1px solid rgb(219 219 219);
+  border-radius: 4px;
+  display: flex;
+  max-height: 600px;
+  min-height: 600px;
+  position: relative;
+  h3.textDefault {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+  }
+  .noMsg {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    position: absolute;
+    bottom: 70px;
+    font-size: 24px;
+    left: 50%;
+    font-weight: 300;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+  .box0 {
+    width: 350px;
+    position: relative;
+    margin-top: 1.5rem;
+  }
+  .box0:after {
+    content: "";
+    border-right: 1px solid rgb(219 219 219);
+    position: absolute;
+    right: 0;
+    top: -20px;
+    height: calc(100% + 40px);
+    width: 2px;
+  }
+  .boxMain {
+    position: relative;
+    width: 100%;
+    padding-left: 1rem;
+ 
+    .scrollEffect {
+      max-height: calc(100% - 100px);
+      overflow: auto;
+      padding-top: 1.5rem;
+      padding-right: 1rem;
+    }
+    .pos-rel {
+      position: relative;
+    }
+    .sender {
+      display: flex;
+      flex-direction: row-reverse;
+      p {
+        background: rgb(229 229 234);
+        color: rgb(0 0 0);
+      }
+    }
+    .reciev {
+      display: flex;
+      align-items: center;
+      p {
+        background: #4c94f6;
+        color: #fff;
+      }
+    }
+    .message__box {
+      position: fixed;
+      bottom: 6rem;
+      input.mesage {
+        width: 48rem;
+        border-radius: 55px;
+        outline: 0;
+        border: 1px solid rgb(221 221 221);
+        padding: 8px 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-top:1px solid rgb(219 219 219);
+  background-color: #fff;
+  z-index: 9999;
+  padding: 10px 0;
+  display: none;
+  .avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 55%;
+  }
+  .menu_icon{
+      ul{
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          li{
+              svg{
+                  font-size: 22px;
+                  color: rgb(38, 38, 38);
+              }
+          }
+      }
+  }
+}

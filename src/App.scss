@@ -1,0 +1,447 @@
+//fonts
+$roboto-font: "Roboto", sans-serif;
+$lobster-font: "Lobster", cursive;
+
+//colors
+$bg-cream: rgb(255, 255, 255);
+$grey: rgb(250, 250, 250);
+$border-color: rgb(219, 219, 219);
+$sliver: rgb(38, 38, 38);
+$light-silver: rgb(142, 142, 142);
+$primary: rgba(0, 149, 246, 0.3);
+$navy: rgb(56, 81, 133);
+$text-black: rgb(38, 38, 38);
+
+body {
+  background-color: #fafafa !important;
+  margin: 0;
+  padding: 0;
+  font-family: $roboto-font !important;
+}
+ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+}
+.mt--h {
+  padding-top: 70px;
+}
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+.containers {
+  width: 65%;
+  margin: 0 auto;
+}
+.container_feed {
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
+}
+//header
+
+.header {
+  background-color: $bg-cream;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid $border-color;
+  z-index: 999;
+
+  .header_flx {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+  .logo {
+    flex: 1;
+    h3 {
+      font-family: $lobster-font;
+    }
+  }
+  .search__bar {
+    flex: 1;
+    // width: 33%;
+    .search {
+      border: 1px solid $border-color;
+      border-radius: 3px;
+      font-size: 14px;
+      padding: 0 12px;
+      outline: 0;
+      height: 35px;
+      width: 85%;
+      background-color: $grey;
+    }
+  }
+  .menu_icon {
+    flex: 1;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      #show__Followers {
+        .dropdown {
+          .dropdown-menu.show {
+            inset: 17px auto auto -290px !important;
+          }
+        }
+      }
+      li {
+        padding-right: 20px;
+        a {
+          svg {
+            color: #000;
+            font-size: 26px;
+          }
+        }
+        .dropdown {
+          .dropSize {
+            min-width: 20rem !important;
+            padding: 10px !important;
+          }
+          .btn_drop {
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            outline: 0 !important;
+          }
+          .btn-secondary:active {
+            box-shadow: none !important;
+          }
+          .btn-secondary:focus {
+            box-shadow: none !important;
+          }
+          .dropdown-menu {
+            min-width: 14rem !important;
+            padding: 0 !important;
+          }
+          .dropdown-menu-before {
+            position: absolute;
+            content: "";
+            border: 1px solid rgb(255 255 255);
+            width: 14px;
+            height: 14px;
+            top: -8px;
+            z-index: -1;
+            transform: rotate(45deg);
+            box-shadow: 0 0 5px 1px rgb(0 0 0 / 10%);
+          }
+          .dropdown-menu.show {
+            inset: 16px auto auto -165px !important;
+          }
+          .dropdown-item {
+            line-height: 30px !important;
+            font-size: 14px !important;
+            color: $text-black;
+            font-weight: 400;
+          }
+        }
+      }
+      li:last-child {
+        padding-right: 0px;
+        position: relative;
+      }
+      .avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 55px;
+        object-fit: cover;
+      }
+    }
+  }
+  .headerLoginBtn {
+    border: 0;
+    background: rgb(0 149 246);
+    color: rgb(255 255 255);
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin-right: 1rem;
+    outline: 0;
+    font-size: 15px;
+  }
+  .headerSignup {
+    border: 0;
+    background: transparent;
+    font-weight: 500;
+    outline: 0;
+    color: rgb(0 149 246);
+    font-size: 15px;
+  }
+}
+
+.main_title {
+  font-family: $lobster-font;
+  margin: 0 0 38px;
+  font-size: 40px;
+  text-align: center;
+}
+
+.main__input {
+  background-color: $grey;
+  border: 1px solid $border-color;
+  width: 100%;
+  margin-bottom: 0.5em;
+  color: $sliver;
+  font-size: 13px;
+  padding: 9px 0 7px 8px;
+  outline: 0;
+  border-radius: 4px;
+}
+.main__input:focus {
+  border: 1px solid rgb(163, 157, 157);
+}
+.main__btn {
+  margin: 0.6rem 0 0.93rem;
+  width: 100%;
+  border: 0;
+  background-color: rgba(0, 149, 246);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 5px 9px;
+  svg {
+    animation: fa-spin 2s infinite;
+  }
+}
+.main__btn:disabled {
+  cursor: not-allowed;
+  background: rgb(0 149 246 / 30%);
+}
+.or_line {
+  position: relative;
+  h5 {
+    font-size: 14px;
+    color: $light-silver;
+  }
+}
+.or_line:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  background-color: rgb(219, 219, 219);
+  height: 1px;
+  width: 42%;
+  height: 1px;
+  bottom: 10px;
+}
+.or_line:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  background-color: rgb(219, 219, 219);
+  height: 1px;
+  width: 42%;
+  height: 1px;
+  bottom: 10px;
+}
+
+.lg_wi_fb {
+  border: 0;
+  background-color: rgb(0, 149, 246);
+  color: #fff;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  span {
+    font-size: 14px;
+  }
+}
+.dhac {
+  margin: 1rem 0;
+  border: 1px solid $border-color;
+  background-color: $bg-cream;
+  text-align: center;
+  padding: 20px 0;
+  span {
+    font-size: 15px;
+    a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+}
+.gtheapp {
+  p {
+    text-align: center;
+    font-size: 14px;
+  }
+  .gth_img {
+    max-width: 140px;
+  }
+}
+#__login {
+  .login_cnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .insta_lft {
+    position: relative;
+    .psabsl {
+      position: absolute;
+      bottom: 83px;
+      right: 59px;
+      img {
+        min-width: 248px;
+      }
+    }
+  }
+  img {
+    float: right;
+  }
+
+  .login__box {
+    min-width: 350px;
+    border: 1px solid $border-color;
+    background-color: $bg-cream;
+    padding: 20px 25px;
+    font-family: $roboto-font;
+    a {
+      text-decoration: none;
+      color: rgb(0, 55, 107);
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    .login__with_fb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.44rem 0 1rem;
+      cursor: pointer;
+      span {
+        margin-left: 0.5rem;
+        color: $navy;
+        font-weight: 500;
+        font-size: 13.5px;
+      }
+    }
+  }
+}
+
+#signup {
+  margin: 40px 0;
+  .signup_box {
+    border: 1px solid $border-color;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 20px 38px;
+    background-color: $bg-cream;
+  }
+  p {
+    text-align: center;
+    color: $light-silver;
+    font-weight: 500;
+  }
+  ._policy {
+    font-size: 13px;
+    color: $light-silver;
+  }
+  .w-set {
+    max-width: 350px;
+  }
+}
+
+//sidebar
+
+.__sidebar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(calc(-50% + 370px));
+  min-width: 290px;
+  height: 100vh;
+  top: 125px;
+  a {
+    font-size: 13px;
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    .profile {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      .avatar {
+        width: 55px;
+        height: 55px;
+        border-radius: 55px;
+        object-fit: cover;
+      }
+      h5.username {
+        font-size: 15px;
+        margin-bottom: 3px;
+        text-transform: lowercase;
+      }
+      h5.f_name {
+        font-size: 15px;
+        color: $light-silver;
+        margin-bottom: 0;
+        font-weight: 300;
+        text-transform: capitalize;
+      }
+    }
+  }
+  .sggest {
+    margin-top: 2rem;
+    h4 {
+      margin-bottom: 0;
+      color: $light-silver;
+      font-size: 16px;
+    }
+    a {
+      color: $text-black;
+      font-weight: 500;
+    }
+    .avatar {
+      height: 38px;
+      width: 38px;
+      border-radius: 55px;
+      object-fit: cover;
+    }
+    h5 {
+      margin-bottom: 0;
+    }
+    .username {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .sgfy {
+      font-size: 14px;
+      font-weight: 400;
+      color: $light-silver;
+    }
+  }
+  p {
+    margin-top: 2.8rem;
+    color: rgb(199, 199, 199);
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .__sidebar {
+    transform: translateX(calc(-50% + 310px));
+  }
+  .containers {
+    width: 75%;
+    margin: 0 auto;
+  }
+}

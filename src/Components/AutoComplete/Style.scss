@@ -1,0 +1,38 @@
+.autocomplete {
+  position: relative;
+  #autoInput {
+    width: 100%;
+    background-color: #efefef;
+    padding: 8px 8px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+  }
+  span {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    font-size: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .suggestions {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: rgb(255 255 255);
+    max-height: 190px;
+    overflow-y: auto;
+    .active {
+      background-color: #ddd;
+    }
+    li {
+      padding: 8px 8px;
+      cursor: pointer;
+    }
+  }
+  svg.spinLoader{
+    animation: fa-spin 2s infinite;
+  }
+}
