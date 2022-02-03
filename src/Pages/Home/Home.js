@@ -61,6 +61,7 @@ const Home = (props) => {
   const [croppedImage, setCroppedImage] = useState(null);
   const [storyInd, setStoryInd] = useState("");
   const [storyLoaded, setStoryLoaded] = useState(false);
+  const [textAreaId, setTextAreaId] = useState(null);
   const uid = useSelector((state) => state?.userData?.uid);
   const dataOfUser = useSelector((state) => state.userData);
 
@@ -312,6 +313,7 @@ const Home = (props) => {
   };
 
   const addComment = (e, id, comments) => {
+    console.log(cmdPostId);
     e.preventDefault();
     let date = new Date();
     let currDate = date.toISOString();
@@ -319,13 +321,16 @@ const Home = (props) => {
     let input = {
       comment: commentModal.length ? commentModal : comment,
       userId: uid,
-      postId: cmdPostId.length != undefined ? cmdPostId : id,
+      postId:
+        cmdPostId.length != undefined && cmdPostId.length > 0 ? cmdPostId : id,
       status: true,
       commUserName: dataOfUser?.username,
       commAvatar: dataOfUser?.avatar,
       created_at: currDate,
     };
-    let iD = cmdPostId.length != undefined ? cmdPostId : id;
+
+    let iD =
+      cmdPostId.length != undefined && cmdPostId.length > 0 ? cmdPostId : id;
 
     db.collection("posts")
       .doc(iD)
@@ -504,8 +509,8 @@ const Home = (props) => {
   };
 
   const onEmojiClick = (event, emojiObject) => {
+    // setCanChooseEmoji(true);
     setChosenEmoji(emojiObject);
-    setCanChooseEmoji(true);
     setComment(comment + chosenEmoji.emoji);
   };
 
@@ -935,25 +940,37 @@ const Home = (props) => {
                           addComment(e, item.postId, item?.comments)
                         }
                       >
-                        {/* onClick={() =>
+                        <span
+                          onClick={() =>
                             setCanChooseEmoji(
                               canChooseEmoji === item?.postId
                                 ? ""
                                 : item?.postId
-                            ) */}
-                        <span
-                          onClick={() => setCanChooseEmoji(!canChooseEmoji)}
+                            )
+                          }
                           style={{ cursor: "pointer" }}
                         >
                           <BsEmojiSmile size={25} color="#000" />
                         </span>
+                        {textAreaId == item?.postId ? (
+                          <textarea
+                            placeholder="Add Comment"
+                            value={comment}
+                            onFocusCapture={(e) => setTextAreaId(item?.postId)}
+                            onChange={(e) => setComment(e.target.value)}
+                            required="required"
+                          ></textarea>
+                        ) : (
+                          <textarea
+                            placeholder="Add Comment"
+                            onFocusCapture={(e) => {
+                              setTextAreaId(item?.postId);
+                              setComment(e.target.value);
+                            }}
+                            required="required"
+                          ></textarea>
+                        )}
 
-                        <textarea
-                          placeholder="Add Comment"
-                          value={comment}
-                          onChange={(e) => setComment(e.target.value)}
-                          required="required"
-                        ></textarea>
                         <div>
                           <button className="post_btn" type="submit">
                             Post

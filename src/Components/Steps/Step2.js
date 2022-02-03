@@ -119,7 +119,7 @@ const Step2 = (props) => {
           <div className="pe-3">
             <div className="d-flex mt-3 align-items-center">
               <img
-                src={prf1}
+                src={userData?.avatar}
                 alt="noImage"
                 style={{
                   width: "28px",

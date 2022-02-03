@@ -114,6 +114,26 @@ const EditProfile = (props) => {
       }, 1000);
     }
   };
+
+  const removeProfile = () => {
+    db.collection("users")
+      .doc(userData.uid)
+      .update({
+        avatar:
+          "https://firebasestorage.googleapis.com/v0/b/instagram-563fe.appspot.com/o/images%2Fdefault_avatar.jpg?alt=media&token=8292d541-0310-4ebb-a64c-952f4a38aafc",
+      })
+      .then((res) => {
+        let url = userData?.avatar
+        let imageRef = storage.refFromURL(url);
+        imageRef.delete();
+        onUpdateUserFunc();
+        setModal(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <Header />
@@ -302,7 +322,9 @@ const EditProfile = (props) => {
             <input type="file" onChange={(e) => onChangeProfile(e)} />
             Upload Photo
           </label>
-          <button className="btn__mdl text-danger">Remove Current Photo</button>
+          <button className="btn__mdl text-danger" onClick={removeProfile}>
+            Remove Current Photo
+          </button>
           <button className="btn__mdl" onClick={toggle}>
             Cancel
           </button>
