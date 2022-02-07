@@ -70,4 +70,13 @@ $link-color: rgb(0, 149, 246);
     width: 100%;
     margin-bottom: 1rem;
   }
+  button.followBtn {
+    background: rgb(0 149 246);
+    border: 0;
+    color: rgb(255 255 255);
+    padding: 5px 30px;
+    font-size: 15px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
 }

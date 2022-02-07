@@ -60,7 +60,7 @@ const Header = (props) => {
             >
               <h3>Instagram</h3>
             </div>
-            {userData.length ? (
+            {userData.uid ? (
               <div className="search__bar">
                 <AutoComplete
                   data={searchResults}

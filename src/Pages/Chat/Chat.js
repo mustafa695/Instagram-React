@@ -4,6 +4,7 @@ import "./Style.scss";
 import Skeleton from "react-loading-skeleton";
 import { db } from "../../config/firebase";
 import { useSelector } from "react-redux";
+import { AiOutlineVerticalAlignBottom } from "react-icons/ai";
 const Chat = () => {
   const [message, setMessage] = useState("");
   const [messagesData, setMessagesData] = useState([]);
@@ -11,6 +12,7 @@ const Chat = () => {
   const [readMessages, setReadMessages] = useState(false);
   const [idOfSender, setIdOfSender] = useState("");
   const [loader, setLoader] = useState(false);
+  const [roomIdSend, setroomIdSend] = useState([]);
   const userData = useSelector((state) => state.userData);
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -21,6 +23,14 @@ const Chat = () => {
     setIdOfSender(id);
     setReadMessages(true);
     try {
+      // db.collection("chat")
+      //   .where("roomIdSender", "==", `${userData.uid}-${id}`)
+      //   .orderBy("created_at", "asc")
+      //   .onSnapshot((doc) => {
+      //     let data = doc.docs.map((i) => i.data());
+      //     console.log(data);
+      //   });
+
       let rid = await db
         .collection("chat")
         .where("roomIdSender", "==", `${userData.uid}-${id}`)
@@ -84,8 +94,6 @@ const Chat = () => {
   }, []);
 
   const sendMessage = (e, id) => {
-    // let ids = "odP6XhpJzDY5ftdmU0Pn3gVF4W73";
-   
     e.preventDefault();
     const d = new Date();
     let date = d.toISOString();
@@ -144,7 +152,6 @@ const Chat = () => {
               <div
                 className="scrollEffect"
                 style={{ display: readMessages ? "block" : "none" }}
-                
               >
                 {messagesData?.length ? (
                   messagesData?.map((data) => {
@@ -185,26 +192,16 @@ const Chat = () => {
                     );
                   })
                 ) : (
-                  <>
-                    <Skeleton
-                      count={2}
-                      style={{
-                        width: "250px",
-                        height: "40px",
-                        borderRadius: "20px",
-                      }}
-                    />
-                    <div className="d-flex justify-content-end">
-                      <Skeleton
-                        count={3}
-                        style={{
-                          width: "150px",
-                          height: "40px",
-                          borderRadius: "20px",
-                        }}
-                      />
-                    </div>
-                  </>
+                  <h6
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      bottom: "60px",
+                    }}
+                  >
+                    No Messages Found
+                  </h6>
                 )}
                 <div ref={messagesEndRef}></div>
                 <div className="message__box">

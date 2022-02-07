@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../config/firebase";
-import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import Suggestion from "./Loader/Suggestion";
 
@@ -10,6 +9,7 @@ const SideHome = () => {
   const [isFollow, setIsFollow] = useState([]);
   const getFollowCollections = () => {
     db.collection("follow")
+      .where("uid", "==", userData?.uid)
       .get()
       .then((res) => {
         let data = res.docs.map((i) => {
@@ -23,7 +23,7 @@ const SideHome = () => {
   useEffect(() => {
     getFollowCollections();
     db.collection("users")
-      .limit(3)
+      .limit(4)
       .orderBy("createAt", "desc")
       .get()
       .then((res) => {
@@ -99,7 +99,7 @@ const SideHome = () => {
                     <h5 className="sgfy">Suggested for you</h5>
                   </div>
                 </div>
-                {isFollow?.find((i, ind) => item.uid == i.fuid) ? (
+                {isFollow?.find((i) => i?.fuid == item?.uid) ? (
                   <a
                     onClick={() =>
                       unfollowUser(isFollow?.find((i) => i.fuid == item.uid).id)

@@ -99,7 +99,7 @@ const Home = (props) => {
       let res = await db
         .collection("posts")
         .orderBy("createdAt", "desc")
-        .limit(3)
+        .limit(5)
         .get();
       setLastVisible(res.docs[res.docs.length - 1].data().createdAt);
 
@@ -770,7 +770,7 @@ const Home = (props) => {
     <>
       <Header />
       <div className="container_feed" id="stryFeeds">
-        {otherStories.length && userStories.length ? (
+        {otherStories.length || userStories.length ? (
           <Slider {...settings}>
             <div
               className="stryItm"
